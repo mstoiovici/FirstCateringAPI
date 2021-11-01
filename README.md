@@ -9,27 +9,27 @@ Employees of Bows Formula One High Performance Cars will be able to use their
 existing employee cards on site kiosks to register and top up with money in 
 order to buy food/drinks.
 
-Tools used for its implementation:
+>Tools used for its implementation:
 * Java 
 * Spring Initializer
 * Spring boot framework
 * H2 database
 * Postman (desktop version as the service is run on localhost)
 
-Instructions for the API project:
-* clone project with:
+>Instructions for the API project:
+* Clone project with:
     * git clone [https://github.com/mstoiovici/FirstCateringAPI.git](https://github.com/mstoiovici/FirstCateringAPI.git)
-* for running the web service:
+* **Running the web service:**
     * from IDE run: **src/main/java/firstcatering/api/Application.java**
     * from terminal run with the maven tool: **mvn spring-boot:run**
     
-* for running the tests:
+* **Automated testing:**
     * from IDE run: 
         * **src/test/java/firstcatering/api/controller/EmployeeCardControllerTest.java**
         * **src/test/java/firstcatering/api/model/EmployeeCardTest.java**
     * from terminal run with the maven tool: **mvn test**
     
-* for manual tests using Postman run :
+* **Manual testing using Postman:**
     * get all employee cards:
       * GET localhost:8080/cards
     * get single employee card: 
@@ -45,7 +45,7 @@ Instructions for the API project:
       
     The browser can be used for manual testing using the same URLs as above.
 
-* for interaction with the H2 database:
+* **Interacting with the H2 database:**
     * go to [http://localhost:8080/h2-console](http://localhost:8080/h2-console)
     * make sure JDBC URL is: jdbc:h2:mem:testdb
     * enter credentials:

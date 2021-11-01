@@ -32,6 +32,10 @@ public class EmployeeCardController {
   @Autowired
   private EmployeeCardService employeeCardService;
 
+  /**
+   *
+   * @return get all employee cards
+   */
   @GetMapping(value = {""}, produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<List<EmployeeCard>> getAllEmployeeCards() {
     List<EmployeeCard> employeeCardList = employeeCardService.getAllEmployeeCards();
@@ -48,6 +52,11 @@ public class EmployeeCardController {
     return new ResponseEntity<List<EmployeeCard>>(employeeCardList, HttpStatus.OK);
   }
 
+  /**
+   *
+   * @param cardID
+   * @return get single employee card with specified cardID
+   */
   @GetMapping(value = "/{card-id}", produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<EmployeeCard> viewEmployeeCard(
       @PathVariable(value = "card-id") String cardID) {
@@ -55,11 +64,21 @@ public class EmployeeCardController {
     return new ResponseEntity<EmployeeCard>(card, HttpStatus.OK);
   }
 
+  /**
+   *
+   * @param cardID
+   * @return get balance of specified employee card
+   */
   @GetMapping(value = "/{card-id}/balance")
   public Double viewEmployeeCardBalance(@PathVariable(value = "card-id") String cardID) {
     return employeeCardService.getEmployeeCardBalance(cardID);
   }
 
+  /**
+   *
+   * @param employeeCard
+   * @return register a new employee card
+   */
   //TODO: fix exception/error when the card is already registered
   @PostMapping(value = "/register",
       consumes = MediaType.APPLICATION_JSON_VALUE,
@@ -69,6 +88,12 @@ public class EmployeeCardController {
         HttpStatus.CREATED);
   }
 
+  /**
+   *
+   * @param cardID
+   * @param topUpAmount
+   * @return specified employee card with updated balance
+   */
   //TODO: when card is frozen do not allow top-up anymore
   @PutMapping(value = "/{card-id}/top-up", produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<EmployeeCard> topUpEmployeeCardBalance(@PathVariable(value = "card-id") String cardID,
@@ -78,6 +103,11 @@ public class EmployeeCardController {
     return new ResponseEntity<EmployeeCard>(employeeCard, HttpStatus.OK);
   }
 
+  /**
+   *
+   * @param cardID
+   * @return message informing employee card has been frozen
+   */
   @PutMapping(value = "/{card-id}/freeze")
   public ResponseEntity<String> freezeEmployeeCard(@PathVariable(value = "card-id") String cardID) {
     String string = employeeCardService.freezeEmployeeCard(cardID);

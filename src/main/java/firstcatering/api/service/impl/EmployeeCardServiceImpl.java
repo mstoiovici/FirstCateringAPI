@@ -20,6 +20,11 @@ public class EmployeeCardServiceImpl implements EmployeeCardService {
   @Autowired
   private EmployeeCardRepository employeeCardRepository;
 
+  /**
+   *
+   * @param employeeCard
+   * @return save employee card to database
+   */
   @Override
   public EmployeeCard registerEmployeeCard(EmployeeCard employeeCard) {
     if (!isEmployeeCardRegistered(employeeCard.getCardID())) {
@@ -30,7 +35,13 @@ public class EmployeeCardServiceImpl implements EmployeeCardService {
     }
   }
 
-  //TODO: allow toUP only for active cards
+  /**
+   *
+   * @param employeeCard
+   * @param amount
+   * @return save employee card with updated balance to database
+   */
+  //TODO: allow top up only for active cards
   @Override
   public EmployeeCard topUpEmployeeCard(EmployeeCard employeeCard, Double amount) {
     if (isEmployeeCardRegistered(employeeCard.getCardID())) {
@@ -41,6 +52,11 @@ public class EmployeeCardServiceImpl implements EmployeeCardService {
     }
   }
 
+  /**
+   *
+   * @param cardID
+   * @return whether employee card is registered
+   */
   public boolean isEmployeeCardRegistered(String cardID) {
     EmployeeCard employeeCard = employeeCardRepository.findByCardID(cardID);
     if (employeeCard != null) {
@@ -49,6 +65,11 @@ public class EmployeeCardServiceImpl implements EmployeeCardService {
     return false;
   }
 
+  /**
+   *
+   * @param cardID
+   * @return balance of specified employee card
+   */
   @Override
   public Double getEmployeeCardBalance(String cardID) {
     EmployeeCard employeeCard = getEmployeeCardByCardID(cardID);
@@ -59,8 +80,12 @@ public class EmployeeCardServiceImpl implements EmployeeCardService {
     }
   }
 
+  /**
+   *
+   * @param cardID
+   * @return specified employee card
+   */
   @Override
-  // TODO fix line 63
   public EmployeeCard getEmployeeCardByCardID(String cardID) {
     if (isEmployeeCardRegistered(cardID)) {
       return employeeCardRepository.findByCardID(cardID);
@@ -70,6 +95,10 @@ public class EmployeeCardServiceImpl implements EmployeeCardService {
     }
   }
 
+  /**
+   *
+   * @return list of all employee cards
+   */
   @Override
   public List<EmployeeCard> getAllEmployeeCards() {
     List<EmployeeCard> employeeCardList = employeeCardRepository.findAll();
@@ -80,6 +109,11 @@ public class EmployeeCardServiceImpl implements EmployeeCardService {
     }
   }
 
+  /**
+   *
+   * @param cardID
+   * @return message informing the specified employee card is frozen
+   */
   @Override
   public String freezeEmployeeCard(String cardID) {
     EmployeeCard employeeCard = getEmployeeCardByCardID(cardID);

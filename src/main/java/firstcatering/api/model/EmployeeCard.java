@@ -65,6 +65,15 @@ public class EmployeeCard extends RepresentationModel<EmployeeCard> implements S
   public EmployeeCard() {
   }
 
+  /**
+   *
+   * @param employeeID
+   * @param name
+   * @param email
+   * @param mobile
+   * @param pin
+   * @param cardID
+   */
   public EmployeeCard(
       @Pattern(regexp = "^\\d{3}\\D{1}$") @NotEmpty String employeeID,
       @NotEmpty String name,
@@ -81,6 +90,11 @@ public class EmployeeCard extends RepresentationModel<EmployeeCard> implements S
     this.cardID = cardID;
   }
 
+  /**
+   *
+   * @param amount
+   * @return get balance
+   */
   public Double topUpBalance(Double amount) {
     if (amount > 0.00) {
       return balance += amount;
@@ -88,10 +102,19 @@ public class EmployeeCard extends RepresentationModel<EmployeeCard> implements S
     return balance;
   }
 
+  /**
+   *
+   * @return get pin
+   */
   public String getPin() {
     return pin;
   }
 
+  /**
+   *
+   * @param pin
+   * sets encoded pin
+   */
   public void setPin(String pin) {
     this.pin = new BCryptPasswordEncoder().encode(pin);
   }
