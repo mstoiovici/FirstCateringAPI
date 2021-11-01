@@ -18,7 +18,7 @@ Tools used for its implementation:
 
 Instructions for the API project:
 * clone project with:
-    * 
+    * git clone [https://github.com/mstoiovici/FirstCateringAPI.git](https://github.com/mstoiovici/FirstCateringAPI.git)
 * for running the web service:
     * from IDE run: **src/main/java/firstcatering/api/Application.java**
     * from terminal run with the maven tool: **mvn spring-boot:run**
