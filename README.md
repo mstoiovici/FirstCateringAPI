@@ -15,9 +15,10 @@ order to buy food/drinks.
 * H2 database
 * Postman
 
->Instructions for the API project:
+>Instructions for interacting with the API project:
 * **Step 1. Clone project with:**
     * git clone [https://github.com/mstoiovici/FirstCateringAPI.git](https://github.com/mstoiovici/FirstCateringAPI.git)
+    
 * **Step 2. Running the web service:**
     * from IDE run the application by running the folowing class: **src/main/java/firstcatering/api/Application.java**
     * from terminal run with the maven tool: **mvn spring-boot:run**
