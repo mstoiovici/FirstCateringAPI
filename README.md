@@ -3,7 +3,7 @@
 This is a RESTful API built per specifications of a Level 4 Apprenticeship 
 Programme's synoptic project.
 
-The API is built for First catering Ltd for use at food kiosks at Bows Formula 
+The API is built for First Catering Ltd for use at food kiosks at Bows Formula 
 One High Performance Cars locations.
 Employees of Bows Formula One High Performance Cars will be able to use their 
 existing employee cards on site kiosks to register and top up with money in 
