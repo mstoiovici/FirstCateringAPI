@@ -29,7 +29,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
   protected void configure(HttpSecurity http) throws Exception {
     http
         .authorizeRequests()
-        .anyRequest().anonymous() // to access any uri request
+        .anyRequest().anonymous()
         .and()
         .formLogin()
         .disable()
