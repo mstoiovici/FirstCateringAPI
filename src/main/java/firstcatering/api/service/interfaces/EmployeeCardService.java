@@ -6,6 +6,8 @@ import firstcatering.api.model.EmployeeCard;
 
 public interface EmployeeCardService {
 
+  String scanEmployeeCard(String cardID);
+
   EmployeeCard registerEmployeeCard(EmployeeCard cardDetails);
 
   EmployeeCard topUpEmployeeCard(EmployeeCard employeeCard, Double amount);

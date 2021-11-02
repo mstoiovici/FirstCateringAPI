@@ -14,11 +14,31 @@ import firstcatering.api.repository.EmployeeCardRepository;
 
 @Service
 public class EmployeeCardServiceImpl implements EmployeeCardService {
+
+  public static final String EMPLOYEE_CARD_NOT_REGISTERED = "Employee card not found, enter valid card ID or register your card";
   @Autowired
   private BCryptPasswordEncoder bCryptPasswordEncoder;
 
   @Autowired
   private EmployeeCardRepository employeeCardRepository;
+
+  private static final String WELCOME_MESSAGE = "Welcome ";
+
+
+  /**
+   *
+   * @param cardID
+   * @return specific message depending on whether is registered
+   */
+  @Override
+  public String scanEmployeeCard(String cardID){
+    EmployeeCard employeeCard = employeeCardRepository.findByCardID(cardID);
+    if (!isEmployeeCardRegistered(cardID)) {
+      return WELCOME_MESSAGE + employeeCard.getName();
+    } else {
+      throw new ResourceNotFoundException(EMPLOYEE_CARD_NOT_REGISTERED);
+    }
+  }
 
   /**
    *
@@ -91,7 +111,7 @@ public class EmployeeCardServiceImpl implements EmployeeCardService {
       return employeeCardRepository.findByCardID(cardID);
     } else {
       throw new ResourceNotFoundException(
-          "Employee card not found, enter valid card number ID or register your card");
+          EMPLOYEE_CARD_NOT_REGISTERED);
     }
   }
 
@@ -105,7 +125,7 @@ public class EmployeeCardServiceImpl implements EmployeeCardService {
     if (!employeeCardList.isEmpty()) {
       return employeeCardList;
     } else {
-      throw new ResourceNotFoundException("No employee card records were found");
+      throw new ResourceNotFoundException("No records were found");
     }
   }
 
@@ -120,9 +140,9 @@ public class EmployeeCardServiceImpl implements EmployeeCardService {
     if (employeeCard != null) {
       employeeCard.setActive(false);
       employeeCardRepository.save(employeeCard);
-      return "Card is no longer active.";
+      return "Card is no longer active";
     } else {
-      throw new ResourceNotFoundException("Card with the provided id not found");
+      throw new ResourceNotFoundException();
     }
   }
 }
